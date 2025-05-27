@@ -1,19 +1,55 @@
-<!--
-SPDX-FileCopyrightText: Copyright (c) 2024-2025, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
-SPDX-License-Identifier: Apache-2.0
+# NVIDIA Agent Intelligence Toolkit
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+NVIDIA Agent Intelligence (AIQ) toolkit is a flexible, lightweight, and unifying library that allows you to easily connect existing enterprise agents to data sources and tools across any framework.
 
-http://www.apache.org/licenses/LICENSE-2.0
+*Note: This is a fork of the official NVIDIA/AIQToolkit repository. The original README continues below. My specific contributions and enhancements are detailed in the section immediately following this note.*
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
--->
+---
+
+## My Enhancements & Contributions to AIQToolkit (Fork by @juicecola)
+
+This fork extends the capabilities of the NVIDIA AIQToolkit with a focus on integrating diverse Large Language Models (LLMs), adding persistent conversational memory, providing a user-friendly interface for interaction, and exposing functionalities via an API.
+
+**Key Additions:**
+
+1.  **Anthropic Claude Integration:**
+    *   Demonstrated seamless integration of Anthropic's Claude models within the LangChain framework, usable with AIQToolkit agents.
+    *   See `hello_langchain_anthropic.py` for a direct example of querying Claude for conversational tasks.
+
+2.  **NVIDIA NIMs Integration:**
+    *   Provided a clear example script (`hello_langchain_nvidia.py`) for leveraging NVIDIA NIMs (NVIDIA Inference Microservices) through LangChain, allowing AIQToolkit agents to utilize NVIDIA's powerful hosted models.
+
+3.  **Conversational Memory Implementation:**
+    *   Enhanced LLM interactions by adding conversational memory, allowing agents to recall previous parts of the dialogue for more coherent and context-aware conversations.
+    *   The script `nvidia_memory_chat.py` showcases this feature, enabling more natural and extended interactions.
+
+4.  **Interactive Streamlit User Interface:**
+    *   Developed `nvidia_chatbot_ui.py`, a user-friendly chat interface built with Streamlit.
+    *   This UI allows users to easily interact with the configured AIQToolkit agents and LLMs (including Claude and NVIDIA NIMs with memory).
+
+
+5.  **Backend API for Frontend Integration:**
+    *   Modified `main.py` to include a simple Flask-based API.
+    *   This API serves as a backend for the Streamlit UI (or other potential frontends), enabling dynamic fetching of responses from the AI agents.
+    *   *(Briefly describe the main endpoint(s) if simple, e.g., `/chat` endpoint for sending messages and receiving agent responses).*
+
+**Running My Examples:**
+
+*   Ensure you have the base AIQToolkit environment set up as per the original NVIDIA instructions (see below).
+*   To run the specific examples I've added:
+    *   **Claude Integration:** You will need an Anthropic API key set as an environment variable (`ANTHROPIC_API_KEY=your_claude_api_key`). Then run:
+        ```bash
+        python hello_langchain_anthropic.py
+        ```
+    *   **NVIDIA NIMs & Memory Chat:** Ensure your `NVIDIA_API_KEY` is set. For the memory chat:
+        ```bash
+        python nvidia_memory_chat.py
+        ```
+    *   **Streamlit UI:**
+        ```bash
+        streamlit run nvidia_chatbot_ui.py
+        ```
+        The UI will connect to the backend API defined in `main.py`. You might need to run `python main.py` in a separate terminal if the UI doesn't start it automatically.
 
 ![NVIDIA Agent Intelligence Toolkit](./docs/source/_static/aiqtoolkit_banner.png "AIQ toolkit banner image")
 
