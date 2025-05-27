@@ -1,0 +1,19 @@
+functions:
+  wikipedia_search:
+    _type: wiki_search
+    max_results: 2
+
+llms:
+  nim_llm:
+    _type: nim
+    model_name: meta/llama-3.1-70b-instruct
+    temperature: 0.0
+
+workflow:
+  _type: react_agent
+  tool_names: [wikipedia_search]
+  llm_name: nim_llm
+  verbose: true
+  retry_parsing_errors: true
+  max_retries: 3
+
